@@ -29,6 +29,7 @@ WriteMakefile(
         'Cache::Memcached'            => 0,
         'Plack::Middleware::ETag'     => 0.03,
         'MooseX::Role::Parameterized' => 0,
+        'Moose::Meta::Attribute::Custom::Trait::Chained' => 0,
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES    => 'StarGit-*' },
