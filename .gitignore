@@ -1,3 +1,2 @@
 environments/production.yml
-app.psgi
 logs/
