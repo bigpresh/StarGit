@@ -18,12 +18,38 @@ charset: "UTF-8"
 # simple: default and very basic template engine
 # template_toolkit: TT
 
-template: "simple"
-
-# template: "template_toolkit"
+template: "template_toolkit"
 # engines:
 #   template_toolkit:
 #     encoding:  'utf8'
 #     start_tag: '[%'
 #     end_tag:   '%]'
 
+graph:
+  attributes:
+    country:
+      label: Country
+      type: Str
+      values:
+        default: 0x090909
+        france: 0x808080
+    language:
+      label: Language
+      type: Str
+      values:
+        Ruby: 0xE32726
+        C: 0x171C3F
+        Python: 0x5BAC29
+        Other: 0xA6347F
+        JavaScript: 0x367FA5
+        Perl: 0x364493
+        PHP: 0x82A635
+        JVM: 0x763C8D
+        Lisp: 0x3AA538
+        default: 0xdddddd
+    degree:
+      label: Degree
+      type: Num
+      colorMin: 0x000000
+      colorMax: 0xffffff
+      default: 0x606060
