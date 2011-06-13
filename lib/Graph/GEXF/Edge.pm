@@ -1,7 +1,7 @@
 package Graph::GEXF::Edge;
 
 use Moose;
-use Data::UUID::LibUUID;
+#use Data::UUID::LibUUID;
 
 with
   'Graph::GEXF::Role::Viz::Size'  => { as  => 'thickness' },
@@ -11,7 +11,7 @@ has id => (
     is       => 'ro',
     isa      => 'Str',
     required => 1,
-    default  => sub { new_uuid_string() }
+#    default  => sub { new_uuid_string() }
 );
 
 has source => (is => 'ro', isa => 'Str', required => 1);

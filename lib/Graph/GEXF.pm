@@ -4,7 +4,7 @@ package Graph::GEXF;
 
 use Moose;
 
-use Data::UUID::LibUUID;
+#use Data::UUID::LibUUID;
 use Moose::Util::TypeConstraints;
 
 use Graph::GEXF::Node;
@@ -124,7 +124,7 @@ sub add_node {
         die "Can't add node wih id $id: already exists";
     }
 
-    $id = new_uuid_string() if !defined $id;
+#    $id = new_uuid_string() if !defined $id;
 
     my $node = Graph::GEXF::Node->new(id => $id);
 

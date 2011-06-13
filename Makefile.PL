@@ -28,7 +28,6 @@ WriteMakefile(
         'Net::HTTP::Spore'            => 0,
         'Cache::Memcached'            => 0,
         'Plack::Middleware::ETag'     => 0.03,
-        'Data::UUID::LibUUID'         => 0,
         'MooseX::Role::Parameterized' => 0,
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
