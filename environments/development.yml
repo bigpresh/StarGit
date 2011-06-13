@@ -25,3 +25,8 @@ show_errors: 1
 # DO NOT EVER USE THAT FEATURE IN PRODUCTION 
 # OR TINY KITTENS SHALL DIE WITH LOTS OF SUFFERING
 auto_reload: 0
+
+mongodb:
+  timeout: 60000
+  query_timeout: 60000
+  host: localhost:27017
