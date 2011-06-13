@@ -125,7 +125,7 @@ function onOverNodes(nodesArray){
 
 // Github network:
 function getGithubGraph(user){
-  url = "http://localhost:3000/graph/local/"+user;
+  url = "/graph/local/"+user;
   
   $.ajax({
     url: url,
@@ -138,7 +138,7 @@ function getGithubGraph(user){
 }
 
 function getGraphAttributes(){
-  url = "http://localhost:3000/graph/attributes";
+  url = "/graph/attributes";
   
   $.ajax({
     url: url,
