@@ -3,14 +3,21 @@ package GitHub::Collector::Role::MongoDB;
 use Moose::Role;
 use MongoDB;
 
+has mongodb_auth => (
+    is         => 'ro',
+    isa        => 'HashRef',
+    auto_deref => 1,
+    default    => sub {{} },
+);
+
 has mongodb => (
     is      => 'ro',
     isa     => 'Object',
     lazy    => 1,
     default => sub {
         my $self = shift;
-        my $conn =
-          MongoDB::Connection->new( timeout => 60000, query_timeout => 60000 );
+        my $conn = MongoDB::Connection->new(
+            $self->mongodb_auth );
         my $db = $conn->github;
         $self->_create_indexes($db);
         return $db;

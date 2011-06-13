@@ -15,7 +15,7 @@ get '/' => sub {
 get '/graph/local/:name' => sub {
     my $name = params->{'name'};
 
-    my $graph = StarGit::Graph->new( name => $name );
+    my $graph = StarGit::Graph->new( name => $name, mongodb_auth => setting('mongodb') );
 
     return send_error( "user " . $name . " doesn't exists", 404 )
       unless $graph->exists($name);
