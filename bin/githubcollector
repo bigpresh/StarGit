@@ -1,0 +1,3 @@
+#!/usr/bin/env perl
+use GitHub::Collector;
+GitHub::Collector->run;
