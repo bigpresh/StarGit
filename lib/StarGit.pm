@@ -2,6 +2,7 @@ package StarGit;
 use Dancer ':syntax';
 
 use StarGit::Graph;
+use Cache::Memcached; # don't use it yet
 
 our $VERSION = '0.1';
 
@@ -15,12 +16,17 @@ get '/graph/local/:name' => sub {
     my $name = params->{'name'};
 
     my $graph = StarGit::Graph->new( name => $name );
+
+    return send_error( "user " . $name . " doesn't exists", 404 )
+      unless $graph->exists($name);
+
     $graph->neighbors( $name, 1 );
     $graph->remove_leaves();
 
     return _finalize($graph);
 };
 
+# XXX do we already use this one ?
 get '/graph/query' => sub {
     my $language = params->{language};
 

@@ -19,6 +19,12 @@ has name => (
     isa => 'Str',
 );
 
+sub exists {
+    my ($self, $name) = @_;
+    my $info = $self->db_profiles->find_one( { login => $name } );
+    $info;
+}
+
 sub neighbors {
     my ($self, $name) = @_;
 
@@ -130,6 +136,9 @@ sub _create_edge {
 sub _get_info_from_login {
     my ($self, $login) = @_;
     my $info = $self->db_profiles->find_one( { login => $login } );
+
+    return undef if (!defined $info);
+
     my $country  = $info->{country}  || 'null';
     my $language = $info->{language} || 'null';
     return ($country, $language);

@@ -26,6 +26,7 @@ WriteMakefile(
         'MooseX::ConfigFromFile' => 0.03,
         'Log::Dispatchouli'      => 2.005,
         'Net::HTTP::Spore'       => 0,
+        'Cache::Memcached'       => 0,
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES    => 'StarGit-*' },
