@@ -1,62 +1,50 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
- 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
-	<head> 
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
-		<title>StartGit | Explore the Github users network</title>
-		<script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
-		<script type="text/javascript" src="js/sigma-connector.js"></script>
-		<script type="text/javascript" src="js/github-connector.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/style.css" /> 
-	</head>
-		<table id="container">
-			<tr id="content">
-				<td colspan="5" width="100%" height="100%">
-					<object id="SiGMa">
-						<param name="movie" value="flash/SiGMa_API.swf" />
-						<param name="quality" value="high" />
-						<param name="allowScriptAccess" value="sameDomain" />
-						<embed src="flash/SiGMa_API.swf" quality="high" width="100%" height="100%" name="SiGMa" quality="high" allowScriptAccess="always">
-						</embed>
-					</object>
-				</td>
-			</tr>
-			<tr id="footer" valign="top">
-				<td class="greyBG">
-					<div class="title">
-						Graphic parameters
-					</div>
-					<form name="node_properties">
-						<br/>
-						nodes color:
-						<br/>
-						<select name="nodes_color" style="width:100%;" onchange="setColor(this.value,graphAttributes);">
-						</select>
-						<br/>
-						nodes size:
-						<br/>
-						<select name="nodes_size" style="width:100%;" onchange="setSize(this.value);">
-						</select>
-					</form>
-				</td>
-				<td class="greyBG">
-					<br/>
-					<a href="#" class="button" onclick="toggleDisplayEdges();">
-						<span class="edges">display edges</span>
-					</a>
-					<a href="#" class="button" onclick="toggleDisplayLabels();">
-						<span class="labels">display labels</span>
-					</a>
-					<a href="#" class="button" onclick="toggleFishEye();">
-						<span class="fisheye">use fisheye zoom</span>
-					</a>
-				</td>
-				<td  class="github" colspan="3">
-					<div style="float:left;">github/</div>
-					<input type="text" id="query" class="query" name="query" onkeypress="if((event.keyCode||event.which)==13) newQuery(this.value);"/>
-				</td>
-			</tr>
-		</table>
-	</body>
-</html>
+<div id="main">
+	<object id="SiGMa">
+		<param name="movie" value="flash/SiGMa_API.swf" />
+		<param name="quality" value="high" />
+		<param name="allowScriptAccess" value="sameDomain" />
+		<embed src="flash/SiGMa_API.swf" quality="high" width="100%" height="100%" name="SiGMa" quality="high" allowScriptAccess="always">
+		</embed>
+	</object>
+</div>
+<div id="foot">
+	<form id="query">
+		<div id="query_query">
+			<div id="query_top">
+				<label for="query_input">github/</label>
+				<input type="text" id="query_input" />
+			</div>
+			<div id="query_bottom">
+			  <span>
+					<label for="query_size">nodes size:</label>
+					<select id="query_size">
+					</select>
+				</span>
+				<span>
+					<label for="query_color">nodes color:</label>
+					<select id="query_color">
+					</select>
+				</span>
+			</div>
+		</div>
+		<div id="query_buttons">
+			<input type="button" class="edges" value="display edges"/>
+			<input type="button" class="labels" value="hide labels"/>
+			<input type="button" class="fisheye" value="use fisheye"/>
+		</div>
+	</form>
+	<div id="user">
+		<div id="user_avatar">
+		</div>
+		<div id="user_info">
+		</div>
+	</div>
+		<div id="legend">
+			<div id="legend_title">
+			Nodes color:
+			</div>
+			<div id="legend_elements">
+			</div>
+		</div>
+	</div>
+</div>

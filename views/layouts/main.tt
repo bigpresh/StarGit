@@ -6,16 +6,40 @@
     <meta http-equiv="Content-type" content="text/html; charset=<% settings.charset %>" />
     <title>StarGit</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="<% request.uri_base %>/javascripts/sigma-connector.js"></script>
-    <script type="text/javascript" src="<% request.uri_base %>/javascripts/github-connector.js"></script>
+    <script type="text/javascript" src="<% request.uri_base %>/javascripts/stargit.js"></script>
     <link rel="stylesheet" href="<% request.uri_base %>/css/style.css" />
+		<script>
+			$(document).ready(function(){
+				$("#query_input").keypress(function(e){
+					if(e.which == 13) {
+						stargit.loadUser(this.value);
+						e.stopPropagation();
+						return false;
+					}
+					return true;
+				});
+				$("#query_size").change(stargit.setSize);
+				$("#query_color").change(stargit.setColor);
+				$("#query_buttons .edges").click(function(){
+					this.value = stargit.toggleEdges()?"hide edges":"display edges";
+				});
+				$("#query_buttons .labels").click(function(){
+					this.value = stargit.toggleLabels()?"hide labels":"display labels";
+				});
+				$("#query_buttons .fisheye").click(function(){
+					this.value = stargit.toggleFishEye()?"hide fisheye":"use fisheye";
+				});
+			});
+		</script>
   </head>
 
-  <body onload="init();">
-    <div id="header">
-      <a id="about" href="#">About</a>
-      <a id="files" href="#">Files</a>
-    </div>
+  <body>
+		<div id="head">
+			<div id="head_title">Stargit - Browse the Github collaborations network</div>
+			<a id="head_about" href="#">About</a>
+			<a id="head_dowload" href="#">Download</a>
+			<a id="head_api" href="#">API</a>
+		</div>" href="#">Files</a>
     <% content %>
   </body>
 </html>
