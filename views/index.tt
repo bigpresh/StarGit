@@ -15,13 +15,15 @@
 				<input type="text" id="query_input" />
 			</div>
 			<div id="query_bottom">
-			  <span>
+			  <span id="query_size_span">
 					<label for="query_size">nodes size:</label>
+					<br/>
 					<select id="query_size">
 					</select>
 				</span>
-				<span>
+				<span id="query_color_span">
 					<label for="query_color">nodes color:</label>
+					<br/>
 					<select id="query_color">
 					</select>
 				</span>

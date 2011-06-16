@@ -29,6 +29,9 @@
 				$("#query_buttons .fisheye").click(function(){
 					this.value = stargit.toggleFishEye()?"hide fisheye":"use fisheye";
 				});
+				
+				flash = document.getElementById("SiGMa");
+				stargit.getGraphAttributes();
 			});
 		</script>
   </head>
