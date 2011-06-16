@@ -26,7 +26,7 @@ WriteMakefile(
         'MooseX::ConfigFromFile'                         => 0.03,
         'Log::Dispatchouli'                              => 2.005,
         'Net::HTTP::Spore'                               => 0,
-        'Dancer::Plugin::Memcached'                      => 0,
+        'Dancer::Plugin::Redis'                          => 0,
         'Plack::Middleware::ETag'                        => 0.03,
         'MooseX::Role::Parameterized'                    => 0,
         'Moose::Meta::Attribute::Custom::Trait::Chained' => 0,

@@ -2,7 +2,7 @@ package StarGit;
 use Dancer ':syntax';
 
 use StarGit::Graph;
-use Dancer::Plugin::Memcached;
+use Dancer::Plugin::Redis;
 
 our $VERSION = '0.1';
 
@@ -15,6 +15,11 @@ get '/' => sub {
 get '/graph/local/:name' => sub {
     my $name = params->{'name'};
 
+    if (my $cached_graph = redis->get($name)){
+        debug("cache hit for $name");
+        return $name;
+    }
+    
     my $graph =
       StarGit::Graph->new( name => $name, mongodb_auth => setting('mongodb') );
 
@@ -25,18 +30,7 @@ get '/graph/local/:name' => sub {
     $graph->remove_leaves();
 
     my $serialized_graph = _finalize($graph);
-    memcached_store($name, $serialized_graph);
-    return $serialized_graph;
-};
-
-# XXX do we already use this one ?
-get '/graph/query' => sub {
-    my $language = params->{language};
-
-    my $graph = StarGit::Graph->new( language => $language );
-    $graph->build_from_query();
-
-    my $serialized_graph = _finalize($graph);
+    redis->set($name, $serialized_graph);
     return $serialized_graph;
 };
 
