@@ -2,7 +2,7 @@ package StarGit;
 use Dancer ':syntax';
 
 use StarGit::Graph;
-use Cache::Memcached; # don't use it yet
+use Dancer::Plugin::Memcached;
 
 our $VERSION = '0.1';
 
@@ -24,7 +24,9 @@ get '/graph/local/:name' => sub {
     $graph->neighbors( $name, 1 );
     $graph->remove_leaves();
 
-    return _finalize($graph);
+    my $serialized_graph = _finalize($graph);
+    memcached_store($name, $serialized_graph);
+    return $serialized_graph;
 };
 
 # XXX do we already use this one ?
@@ -34,13 +36,23 @@ get '/graph/query' => sub {
     my $graph = StarGit::Graph->new( language => $language );
     $graph->build_from_query();
 
-    return _finalize($graph);
+    my $serialized_graph = _finalize($graph);
+    return $serialized_graph;
 };
 
 get '/graph/attributes' => sub {
     my $graph_settings = setting('graph');
     my $attributes     = $graph_settings->{attributes};
     return { attributes => $attributes };
+};
+
+get '/profile/:login' => sub {
+    my $login = params->{login};
+    my $info = StarGit::Info->new( login => $login );
+    if ( !defined $info ) {
+        return send_error( "no information for profile " . $login );
+    }
+    return $info;
 };
 
 sub _finalize {
