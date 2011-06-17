@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		<div id="query_buttons">
-			<input type="button" class="edges" value="display edges"/>
+			<input type="button" class="edges" value="hide edges"/>
 			<input type="button" class="labels" value="hide labels"/>
 			<input type="button" class="fisheye" value="use fisheye"/>
 		</div>
