@@ -192,8 +192,6 @@ var stargit=(function(){
 		}
 		
 		if(graphAttributes){
-			console.debug(colorAtts[0]);
-			console.debug(graphAttributes[colorAtts[0]]);
 			setLegend(colorAtts[0]["label"],colorAtts[0]);
 		}
 	}
@@ -206,13 +204,11 @@ var stargit=(function(){
 		
 		setSize: function(e){
 			if(!setFlash()) return;
-			console.debug(e.target.value);
 			flash.setSize(e.target.value);
 		},
 		
 		setColor: function(e){
 			if(!setFlash()) return;
-			console.debug(e.target.value);
 			
 			setLegend(e.target.value,graphAttributes[e.target.value]);
 			
@@ -268,9 +264,17 @@ var stargit=(function(){
 		},
 		
 		onOverNodes: function(nodesArray){
-			for(var i=0;i<nodesArray.length;i++){
-				console.debug("node: "+nodesArray[i]);
-			}
+//		  var url = "/";
+//		  
+//		  $.ajax({
+//		    url: url,
+//		    dataType: 'json',
+//		    success:
+//		      function(json){
+//		        graphAttributes = (json && json["attributes"]) ? json["attributes"] : {};
+//		        setComboBoxes();
+//		      }
+//		  });
 		}
 	};
 })();
