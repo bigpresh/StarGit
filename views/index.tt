@@ -35,13 +35,33 @@
 			<input type="button" class="fisheye" value="use fisheye"/>
 		</div>
 	</form>
-	<div id="user">
-		<div id="user_avatar">
-		</div>
-		<div id="user_info">
-		</div>
-	</div>
-		<div id="legend">
+
+        <div id="infobox">
+
+          <div id="info_graph">
+            <span id="info_graph_desc"></span>
+          </div>
+          
+	  <div id="user" style="display:none">
+	    <div id="gravatar">
+              <img id="gravatared" style="display:none" />
+	    </div>
+            <div id="user_info">
+              name: <span id="user_name"></span><br />
+              website: <span id="user_website"></span><br />
+              indegre: <span id="user_indegree"></span><br />
+              country: <span id="user_country"></span><br />
+              main language: <span id="user_language"></span><br />
+            </div>
+	  </div>
+
+          <div id="error" style="display:none">
+            <span id="error_reason"></span>
+          </div>
+
+        </div>
+
+	<div id="legend">
 			<div id="legend_title">
 			Nodes color:
 			</div>
