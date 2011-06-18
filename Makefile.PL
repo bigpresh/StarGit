@@ -22,6 +22,7 @@ WriteMakefile(
         'MooseX::App::Cmd'                               => 0.06,
         'Try::Tiny'                                      => 0.09,
         'JSON'                                           => 2.53,
+        'JSON::XS'                                       => 0,
         'DateTime'                                       => 0.70,
         'MooseX::ConfigFromFile'                         => 0.03,
         'Log::Dispatchouli'                              => 2.005,
