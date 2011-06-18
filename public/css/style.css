@@ -245,6 +245,8 @@ input.fisheye{
 }
 
 #error{
+   padding-left: 0.8em;
+   padding-top: 2em;
 }
 
 #legend_title {
