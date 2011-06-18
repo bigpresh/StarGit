@@ -17,7 +17,7 @@ get '/graph/local/:name' => sub {
 
     if (my $cached_graph = redis->get($name)){
         debug("cache hit for $name");
-        return $name;
+        return $cached_graph;
     }
     
     my $graph =
@@ -29,7 +29,7 @@ get '/graph/local/:name' => sub {
     $graph->neighbors( $name, 1 );
     $graph->remove_leaves();
 
-    my $serialized_graph = _finalize($graph);
+    my $serialized_graph = to_json(_finalize($graph));
     redis->set($name, $serialized_graph);
     return $serialized_graph;
 };
