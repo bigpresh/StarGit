@@ -173,15 +173,6 @@ input.fisheye{
 	background: url("../images/fisheye.png") no-repeat 0 50%;
 }
 
-#user{
-	float: left;
-	height: 112px;
-	width: 32%;
-
-	border-top-color: #FFF;
-	border-top-width: 1px;
-	border-top-style: solid;
-}
 
 #legend{
 	float: left;
@@ -213,4 +204,51 @@ input.fisheye{
 
 .button{
 	display: block;
+}
+
+/*profile information*/
+
+#infobox{
+   float: left;
+   height: 112px;
+   width: 32%;
+
+   border-top-color: #FFF;
+   border-top-width: 1px;
+   border-top-style: solid;
+}
+
+#info_graph {
+   height:2em;
+   padding-left: 0.8em;
+   font-size: 8px;
+   border-bottom:1px solid #bedce7;   
+}
+
+#user {
+}
+
+#gravatar{
+   width: 90px;
+   padding: 2px;
+   float:left;
+}
+
+#gravatared {
+   border:1px solid #d0d0d0;
+   background-color:white;
+   margin-right:4px;
+   margin-left:4px;
+}
+
+#user_info {
+   padding:.8em 0 .8em 1.2em;
+   border-left:1px solid #bedce7;
+   float: left;
+   color:#808080;;
+   font-size:.85em;
+   line-height:1.5em;
+}
+
+#error{
 }
