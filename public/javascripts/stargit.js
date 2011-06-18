@@ -19,101 +19,114 @@ var stargit=(function(){
 	}
 	
 	function setLegend(attName,attribute){
-		// First, let's remove all "legend_element" elements:
-		$("#legend>*").remove();
+	  // First, let's remove all "legend_element" elements:
+	  $("#legend>*").remove();
 		
-		// Then, let's add the new legend elements:
-		var legTitle = document.createElement("div");
-		legTitle.id = "legend_title";
+	  // Then, let's add the new legend elements:
+	  var legTitle = document.createElement("div");
+	  legTitle.id = "legend_title";
 		
-		$("#legend").append(legTitle);
-		$("#legend_title").append("Nodes color: ");
+	  $("#legend").append(legTitle);
+	  $("#legend_title").append("Nodes color: ");
 		
-		var fieldB = document.createElement("strong");
-		fieldB.style.fontSize = "12px";
-		fieldB.innerHTML = (attribute["label"]?attribute["label"]:attName);
-		$("#legend_title").append(fieldB);
+	  var fieldB = document.createElement("strong");
+	  fieldB.style.fontSize = "10px";
+	  fieldB.innerHTML = (attribute["label"]?attribute["label"]:attName);
+	  $("#legend_title").append(fieldB);
 		
-		var legElements = document.createElement("div");
-		legElements.id = "legend_elements";
+	  var legElements = document.createElement("div");
+	  legElements.id = "legend_elements";
 		
-		$("#legend").append(legElements);
+	  $("#legend").append(legElements);
 		
-		if(attribute["type"]=="Num"){
-			var grad = document.createElement("div");
-			
-			grad.style.backgroundImage = 
-				"-webkit-gradient("+
-	    	"    linear,"+
-	    	"    left top,"+
-	    	"    right top,"+
-	    	"    color-stop(0, "+attribute["colorMax"].replace("0x","#")+"),"+
-	    	"    color-stop(1, "+attribute["colorMin"].replace("0x","#")+"))";
-    	
-    	grad.style.backgroundImage = 
-	    	"-moz-linear-gradient("+
-	    	"    left center,"+
-	    	"    "+attribute["colorMax"].replace("0x","#")+" 0%,"+
-	    	"    "+attribute["colorMin"].replace("0x","#")+" 100%)";
+	  if(attribute["type"]=="Num"){
+	    var grad = document.createElement("div");
+	    grad.style.backgroundImage = 
+	      "-webkit-gradient("+
+	      "    linear,"+
+	      "    left top,"+
+	      "    right top,"+
+	      "    color-stop(0, "+attribute["colorMax"].replace("0x","#")+"),"+
+	      "    color-stop(1, "+attribute["colorMin"].replace("0x","#")+"))";
+    	    
+    	    grad.style.backgroundImage = 
+	      "-moz-linear-gradient("+
+	      "    left center,"+
+	      "    "+attribute["colorMax"].replace("0x","#")+" 0%,"+
+	      "    "+attribute["colorMin"].replace("0x","#")+" 100%)";
 	    
-			$("#legend_elements").append("<br/>");
-			
+	    $("#legend_elements").append("<br/>");
+	    
 	    grad.style.height = "20px";
 	    grad.style.width = "80%";
 	    grad.style.marginLeft = "10%";
     	
-			$("#legend_elements").append(grad);
+	    $("#legend_elements").append(grad);
 			
-			var lowest = document.createElement("div");
-			lowest.style.paddingTop = "5px";
-			lowest.style.paddingLeft = "5px";
-			lowest.style.float = "left";
-			lowest.style.styleFloat = "left";
-			lowest.style.cssFloat = "left";
-			lowest.style.display = "inline";
-			lowest.innerHTML = "(lowest values)";
-			$("#legend_elements").append(lowest);
+	    var lowest = document.createElement("div");
+	    lowest.style.paddingTop = "5px";
+	    lowest.style.paddingLeft = "5px";
+	    lowest.style.float = "left";
+	    lowest.style.styleFloat = "left";
+	    lowest.style.cssFloat = "left";
+	    lowest.style.display = "inline";
+	    lowest.innerHTML = "(lowest values)";
+	    $("#legend_elements").append(lowest);
+
+	    var highest = document.createElement("div");
+	    highest.style.paddingTop = "5px";
+	    highest.style.paddingRight = "5px";
+	    highest.style.float = "right";
+	    highest.style.styleFloat = "right";
+	    highest.style.cssFloat = "right";
+	    highest.style.display = "inline";
+	    highest.innerHTML = "(highest values)";
+	    $("#legend_elements").append(highest);
 			
-			var highest = document.createElement("div");
-			highest.style.paddingTop = "5px";
-			highest.style.paddingRight = "5px";
-			highest.style.float = "right";
-			highest.style.styleFloat = "right";
-			highest.style.cssFloat = "right";
-			highest.style.display = "inline";
-			highest.innerHTML = "(highest values)";
-			$("#legend_elements").append(highest);
-			
-		}else if(attribute["type"]=="Str"){
-			var l = attribute["values"].length;
-			
-			for(var val in attribute["values"]){
-				var le = document.createElement("div");
-				le.id = "value_"+val;
-				le.style.display = "inline";
-				$("#legend_elements").append(le);
+	  }else if(attribute["type"]=="Str"){
+            var cpt = 0;
+	    for(var val in attribute["values"]){
+
+              var divname = val.replace(" ", "_");
+              var legend  = document.createElement("div");
+              legend.id = "value_"+divname;
+              legend.style.float="left";
+              legend.style.width = "110px";
+              $("#legend_elements").append(legend);
 				
-				var bg = document.createElement("div");
-				bg.style.width = "13px";
-				bg.style.height = "13px";
-				bg.style.marginLeft = "12px";
-				bg.style.marginTop = "12px";
-				bg.style.float = "left";
-				bg.style.styleFloat = "left";
-				bg.style.cssFloat = "left";
-				bg.style.backgroundColor = attribute["values"][val].replace("0x","#");
-				$("#value_"+val).append(bg);
-				
-				var ti = document.createElement("div");
-				ti.innerHTML = val;
-				ti.style.paddingLeft = "3px";
-				ti.style.marginTop = "12px";
-				ti.style.float = "left";
-				ti.style.styleFloat = "left";
-				ti.style.cssFloat = "left";
-				$("#value_"+val).append(ti);
-			}
-		}
+              var background = document.createElement("div");
+              background.style.width = "13px";
+              background.style.height = "13px";
+              background.style.marginLeft = "12px";
+              background.style.marginTop = "12px";
+              background.style.float = "left";
+              background.style.styleFloat = "left";
+              background.style.cssFloat = "left";
+              background.style.border = "1px solid black";
+              background.style.backgroundColor = attribute["values"][val].replace("0x","#");
+              $("#value_"+divname).append(background);
+
+              var texte = document.createElement("div");
+              texte.innerHTML = val + "<br />";
+              texte.style.paddingLeft = "3px";
+              texte.style.marginTop = "12px";
+              texte.style.float = "left";
+              texte.style.styleFloat = "left";
+              texte.style.cssFloat = "left";
+              $("#value_"+divname).append(texte);
+/*              
+              cpt = cpt + 1;
+              console.debug("on a " + cpt + " pour " + val);
+
+              if (cpt > 3) {
+                console.debug("on clear");
+                var clear = document.createElement("div");
+                clear.style.clear = "both";
+                $("#value_"+divname).append(clear);
+                cpt = 0;
+              }*/
+            }
+	  }
 	}
 	
 	// This function refreshes the graph from the login of
