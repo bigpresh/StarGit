@@ -31,8 +31,15 @@ graph:
       label: Country
       type: Str
       values:
-        default: 0x090909
-        france: 0x808080
+        default: 0xA3A3A3
+        "United States": 0x5100FF
+        "United Kinddom": 0x00AAFF
+        Germany: 0x856508
+        Canada: 0xD5B2D9
+        Brazil: 0x37A339
+        France: 0xE391E3
+        Japan: 0xFF0000
+        Russia: 0xFF9100
     language:
       label: Language
       type: Str
@@ -45,11 +52,10 @@ graph:
         Perl: 0x364493
         PHP: 0x82A635
         JVM: 0x763C8D
-        Lisp: 0x3AA538
         default: 0xdddddd
     degree:
       label: Degree
       type: Num
-      colorMin: 0x000000
-      colorMax: 0xffffff
-      default: 0x606060
+      colorMin: 0xFFCCCC
+      colorMax: 0xFF0000
+      default: 0xFA7070
