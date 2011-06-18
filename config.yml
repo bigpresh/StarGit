@@ -56,6 +56,6 @@ graph:
     degree:
       label: Degree
       type: Num
-      colorMin: 0xFFCCCC
-      colorMax: 0xFF0000
+      colorMin:  0xFF0000
+      colorMax: 0xFFCCCC
       default: 0xFA7070
