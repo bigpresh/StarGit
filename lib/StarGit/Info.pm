@@ -20,11 +20,11 @@ sub get {
     return {
         login    => $self->login,
         name     => $profile->{name} || $self->login,
-        website  => $profile->{blog},
+        website  => $profile->{blog} || "none",
         gravatar => $profile->{gravatar_id},
-        indegree => $profile->{indegree},
-        country => $profile->{country} || "",
-        language => $profile->{language} || "",
+        indegree => $profile->{indegree} || 0,
+        country  => $profile->{country} || "unknown",
+        language => $profile->{language} || "unknown",
     };
 }
 
