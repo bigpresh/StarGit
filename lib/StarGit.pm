@@ -13,6 +13,14 @@ get '/' => sub {
     template 'index';
 };
 
+get '/about' => sub {
+    template 'about';
+};
+
+get '/api' => sub {
+    template 'api';
+};
+
 get '/graph/local/:name' => sub {
     my $name = params->{'name'};
 
