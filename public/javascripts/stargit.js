@@ -119,16 +119,29 @@ var stargit=(function(){
 	// This function refreshes the graph from the login of
 	// a user:
 	function getGithubGraph(user){
+          $("#user").hide();
+          $("#error").hide();
 	  url = "/graph/local/"+user;
-	  
 	  $.ajax({
 	    url: url,
 	    dataType: 'json',
+            error:function(){
+              $("#user").hide();
+              $("#error").show();
+              $("#error_reason").text("Can't find graph for user " + user);
+            },
 	    success:
-	      function(json){
-	        resetGraph(json);
-	  			if(document.getElementById("query_input").value) document.getElementById("query_input").value = user;
-	      }
+	    function(json){
+              console.log(json);
+              if (json.nodes.length == 0){
+                $("#error").show();
+                $("#error_reason").text("This user has not received any contributions");
+              }
+              $("#info_graph_desc").text("The graph for " + user + " contains " + json.nodes.length + " nodes and " + json.edges.length + " edges");
+	      resetGraph(json);
+	      if(document.getElementById("query_input").value)
+                document.getElementById("query_input").value = user;
+	    }
 	  });
 	}
 
@@ -264,17 +277,26 @@ var stargit=(function(){
 		},
 		
 		onOverNodes: function(nodesArray){
-//		  var url = "/";
-//		  
-//		  $.ajax({
-//		    url: url,
-//		    dataType: 'json',
-//		    success:
-//		      function(json){
-//		        graphAttributes = (json && json["attributes"]) ? json["attributes"] : {};
-//		        setComboBoxes();
-//		      }
-//		  });
+                  if (nodesArray[0]){
+		    var url = "/profile/" + nodesArray[0];
+		    $.ajax({
+		      url: url,
+		      dataType: 'json',
+		      success:
+		      function(json){
+                        $("#error").hide();
+                        $("#user").show();
+                        var gravatar = "http://www.gravatar.com/avatar/" + json.gravatar;
+                        $("#gravatared").attr("src", gravatar);
+                        $("#gravatared").show();
+                        $("#user_name").text(json.name);
+                        $("#user_website").text(json.website);                        
+                        $("#user_indegree").text(json.indegree);                        
+                        $("#user_country").text(json.country);                        
+                        $("#user_language").text(json.language);                        
+		      }
+		    });
+                  }
 		}
 	};
 })();
