@@ -190,12 +190,6 @@ input.fisheye{
 	border-left-style: solid;
 }
 
-#legend_title{
-	padding-left: 10px;
-	width: 100%;
-	height: 25%;
-	font-size: 10pt;
-}
 
 #legend_elements{
 	width: 100%;
@@ -219,9 +213,9 @@ input.fisheye{
 }
 
 #info_graph {
-   height:2em;
+   height:22px;
    padding-left: 0.8em;
-   font-size: 8px;
+   font-size: 10px;
    border-bottom:1px solid #bedce7;   
 }
 
@@ -251,4 +245,11 @@ input.fisheye{
 }
 
 #error{
+}
+
+#legend_title {
+   height:22px;
+   padding-left: 0.8em;
+   font-size: 10px;
+   border-bottom:1px solid #bedce7;   
 }
