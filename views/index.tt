@@ -1,73 +1,78 @@
 <div id="main">
-	<object id="SiGMa">
-		<param name="movie" value="flash/SiGMa_API.swf" />
-		<param name="quality" value="high" />
-		<param name="allowScriptAccess" value="sameDomain" />
-		<embed src="flash/SiGMa_API.swf" quality="high" width="100%" height="100%" name="SiGMa" quality="high" allowScriptAccess="always">
-		</embed>
-	</object>
+  <object id="SiGMa">
+    <param name="movie" value="flash/SiGMa_API.swf" />
+    <param name="quality" value="high" />
+    <param name="allowScriptAccess" value="sameDomain" />
+    <embed src="flash/SiGMa_API.swf" quality="high" width="100%" height="100%" name="SiGMa" quality="high" allowScriptAccess="always">
+    </embed>
+  </object>
 </div>
+
 <div id="foot">
-	<form id="query">
-		<div id="query_query">
-			<div id="query_top">
-				<label for="query_input">github/</label>
-				<input type="text" id="query_input" />
-			</div>
-			<div id="query_bottom">
-			  <span id="query_size_span">
-					<label for="query_size">nodes size:</label>
-					<br/>
-					<select id="query_size">
-					</select>
-				</span>
-				<span id="query_color_span">
-					<label for="query_color">nodes color:</label>
-					<br/>
-					<select id="query_color">
-					</select>
-				</span>
-			</div>
-		</div>
-		<div id="query_buttons">
-			<input type="button" class="edges" value="hide edges"/>
-			<input type="button" class="labels" value="hide labels"/>
-			<input type="button" class="fisheye" value="use fisheye"/>
-		</div>
-	</form>
 
-        <div id="infobox">
+  <form id="query">
 
-          <div id="info_graph">
-            <span id="info_graph_desc"></span>
-          </div>
+    <div id="query_query">
+      <div id="query_top">
+	<label for="query_input">github/</label>
+	<input type="text" id="query_input" />
+      </div>
+
+      <div id="query_bottom">
+	<span id="query_size_span">
+	  <label for="query_size">nodes size:</label>
+	  <br/>
+	  <select id="query_size">
+	  </select>
+	</span>
+	<span id="query_color_span">
+	  <label for="query_color">nodes color:</label>
+	  <br/>
+	  <select id="query_color">
+	  </select>
+	</span>
+      </div>
+    </div>
+
+    <div id="query_buttons">
+      <input type="button" class="edges" value="hide edges"/>
+      <input type="button" class="labels" value="hide labels"/>
+      <input type="button" class="fisheye" value="use fisheye"/>
+    </div>
+
+  </form>
+
+  <div id="infobox">
+
+    <div id="info_graph">
+      <span id="info_graph_desc"></span>
+    </div>
           
-	  <div id="user" style="display:none">
-	    <div id="gravatar">
-              <img id="gravatared" style="display:none" />
-	    </div>
-            <div id="user_info">
-              name: <span id="user_name"></span><br />
-              website: <span id="user_website"></span><br />
-              indegre: <span id="user_indegree"></span><br />
-              country: <span id="user_country"></span><br />
-              main language: <span id="user_language"></span><br />
-            </div>
-	  </div>
+    <div id="user" style="display:none">
+      <div id="gravatar">
+        <img id="gravatared" style="display:none" />
+      </div>
+      <div id="user_info">
+        name: <span id="user_name"></span><br />
+        website: <span id="user_website"></span><br />
+        indegre: <span id="user_indegree"></span><br />
+        country: <span id="user_country"></span><br />
+        main language: <span id="user_language"></span><br />
+      </div>
+    </div>
 
-          <div id="error" style="display:none">
-            <span id="error_reason"></span>
-          </div>
+    <div id="error" style="display:none">
+      <span id="error_reason"></span>
+    </div>
 
-        </div>
+  </div>
 
-	<div id="legend">
-          <div id="legend_title">
-	    Nodes color:
-	  </div>
-	  <div id="legend_elements">
-	  </div>
-	</div>
+  <div id="legend">
+    <div id="legend_title">
+      Nodes color:
+    </div>
+    <div id="legend_elements">
+    </div>
+  </div>
 
-</div>
 </div>
