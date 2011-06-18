@@ -84,7 +84,6 @@ var stargit=(function(){
 	    $("#legend_elements").append(highest);
 			
 	  }else if(attribute["type"]=="Str"){
-            var cpt = 0;
 	    for(var val in attribute["values"]){
 
               var divname = val.replace(" ", "_");
@@ -114,17 +113,6 @@ var stargit=(function(){
               texte.style.styleFloat = "left";
               texte.style.cssFloat = "left";
               $("#value_"+divname).append(texte);
-/*              
-              cpt = cpt + 1;
-              console.debug("on a " + cpt + " pour " + val);
-
-              if (cpt > 3) {
-                console.debug("on clear");
-                var clear = document.createElement("div");
-                clear.style.clear = "both";
-                $("#value_"+divname).append(clear);
-                cpt = 0;
-              }*/
             }
 	  }
 	}
