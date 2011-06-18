@@ -15,15 +15,16 @@ with qw(
 sub get {
     my $self = shift;
 
-    my $profile = $self->db_profiles->findOne( { login => $self->login } );
-    return undef unless defined $profile;
+    my $profile = $self->db_profiles->find_one( { login => $self->login } );
 
     return {
         login    => $self->login,
-        name     => $profile->{name},
-        email    => $profile->{email},
-        website  => $profile->{website},
-        gravatar => $profile->{gravatar},
+        name     => $profile->{name} || $self->login,
+        website  => $profile->{blog},
+        gravatar => $profile->{gravatar_id},
+        indegree => $profile->{indegree},
+        country => $profile->{country} || "",
+        language => $profile->{language} || "",
     };
 }
 
