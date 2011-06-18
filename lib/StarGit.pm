@@ -2,6 +2,7 @@ package StarGit;
 use Dancer ':syntax';
 
 use StarGit::Graph;
+use StarGit::Info;
 use Dancer::Plugin::Redis;
 
 our $VERSION = '0.1';
@@ -42,10 +43,12 @@ get '/graph/attributes' => sub {
 
 get '/profile/:login' => sub {
     my $login = params->{login};
-    my $info = StarGit::Info->new( login => $login );
+    my $info = StarGit::Info->new( login => $login )->get();
+
     if ( !defined $info ) {
         return send_error( "no information for profile " . $login );
     }
+
     return $info;
 };
 
