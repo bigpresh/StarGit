@@ -30,3 +30,9 @@ mongodb:
   timeout: 60000
   query_timeout: 60000
   host: localhost:27017
+
+plugins:  
+  Redis:
+    server: '127.0.0.1:6379'
+    debug: 0
+    
