@@ -1,0 +1,28 @@
+<div id="main">
+  <div id="static">
+    <h1>StarGit's API</h1>
+
+    StarGit provides a simple API to get informations for a user.
+    
+    <h2>Methods</h2>
+
+    <h3>/profile/:login</h3>
+
+    <ul>
+      <li>method: <strong>GET</strong></li>
+      <li>status: <strong>200</strong> if user exists, <strong>404</strong> when user doesn't exists</li>
+      <li>format: <strong>JSON</strong></li>
+      <li>keys:
+        <ul>
+          <li>login: user's login in GitHub</li>
+          <li>country: name of the country (<strong>unknown</strong> if the information wasn't extracted)</li>
+          <li>website: url of the website (can be <strong>none</strong>; validity of the URL is not guaranted)</li>
+          <li>language: main language for the profile (can be <strong>unknown</strong>)</li>
+          <li>gravatar: gravatar's ID</li>
+          <li>name: name</li>
+          <li>indegree: indegree</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
