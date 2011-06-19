@@ -42,16 +42,17 @@ sub neighbors {
 sub _neighbors {
     my ( $self, $name ) = @_;
 
-    my ($country, $language) = $self->_get_info_from_login($name);
+    my $desc = $self->_get_info_from_login($name);
     my $degree = $self->nodes->{$name} ? $self->nodes->{$name}->{degree} : 0;
+
+
     delete $self->nodes->{$name};
 
     $self->nodes->{$name} = {
         id       => $name,
         label    => $name,
         degree   => $degree,
-        country  => $country,
-        language => $language,
+        %$desc,
     };
 
     foreach my $type (qw/source target/) {
@@ -119,29 +120,32 @@ sub _create_edge {
             $self->nodes->{ $edge->{$type} }->{degree}++;
         }
         else {
-            my ( $country, $language ) =
+            my $desc = 
               $self->_get_info_from_login( $edge->{$type} );
 
             $self->nodes->{ $edge->{$type} } = {
                 id       => $edge->{$type},
                 label    => $edge->{$type},
                 degree   => 1,
-                country  => $country,
-                language => $language,
+                %$desc,
             };
         }
     }
 }
 
 sub _get_info_from_login {
-    my ($self, $login) = @_;
+    my ( $self, $login ) = @_;
     my $info = $self->db_profiles->find_one( { login => $login } );
 
-    return undef if (!defined $info);
+    return undef if ( !defined $info );
 
-    my $country  = $info->{country}  || 'null';
-    my $language = $info->{language} || 'null';
-    return ($country, $language);
+    my $desc = {
+        country  => $info->{country}  || 'null',
+        language => $info->{language} || 'null',
+        followers_count => $info->{followers_count},
+        indegree => $info->{indegree},
+    };
+    return $desc;
 }
 
 1;
