@@ -3,11 +3,15 @@ use Dancer ':syntax';
 
 use StarGit::Graph;
 use StarGit::Info;
-use Dancer::Plugin::Redis;
+use Redis;
 
 our $VERSION = '0.1';
 
 set serializer => 'JSON';
+
+my $redis_conf = setting('redis');
+my $redis = Redis->new( server => $redis_conf->{server} );
+$redis->auth( $redis_conf->{auth} ) if $redis_conf->{auth};
 
 get '/' => sub {
     template 'index';
@@ -24,7 +28,7 @@ get '/api' => sub {
 get '/graph/local/:name' => sub {
     my $name = params->{'name'};
 
-    if (my $cached_graph = redis->get($name)){
+    if (my $cached_graph = $redis->get($name)){
         debug("cache hit for $name");
         return $cached_graph;
     }
@@ -39,7 +43,7 @@ get '/graph/local/:name' => sub {
     $graph->remove_leaves();
 
     my $serialized_graph = to_json(_finalize($graph));
-    redis->set($name, $serialized_graph);
+    $redis->set($name, $serialized_graph);
     return $serialized_graph;
 };
 
