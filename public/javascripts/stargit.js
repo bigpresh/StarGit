@@ -308,6 +308,7 @@ var stargit=(function(){
 
         getGithubGraph(query);
         document.getElementById("query_input").value = query;
+		    window.location.hash = query;
       }
     },
 
@@ -315,6 +316,15 @@ var stargit=(function(){
       if (nodesArray[0]){
         getNodeDescription(nodesArray[0]);
       }
-    }
+    },
+		
+		onFlashReady: function(){
+			var userNameFromAnchor = window.location.hash.substring(1);
+			
+			if(userNameFromAnchor){
+		    getGithubGraph(userNameFromAnchor);
+		    document.getElementById("query_input").value = userNameFromAnchor;
+			}
+		}
   };
 })();
