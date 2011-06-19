@@ -9,7 +9,13 @@
 
     <h3 id="whatisstargit">What is StarGit</h3>
 
+    StarGit is built on top of SIGMA, a flash application to explore a graph.<br />
+
+    With StarGit, you're invited to explore the graph of GitHub's profiles.
+    
     <h3 id="howtoread">How to read the graph</a></li>
+
+    When you look for a profile, if the user has ever received some contributions on one of his projets, you'll get his graph with the people who had contributed.
     
   </div>
 </div>
