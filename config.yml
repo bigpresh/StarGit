@@ -54,8 +54,20 @@ graph:
         JVM: 0x763C8D
         default: 0xdddddd
     degree:
-      label: Degree
+      label: Contributions
       type: Num
       colorMin:  0xFF0000
       colorMax: 0xFFCCCC
+      default: 0xFA7070
+    followers_count:
+      label: Followers
+      type: Num
+      colorMin: 0x03A16A
+      colorMax: 0xB1E3D1
+      default: 0xFA7070
+    indegree:
+      label: InDegree
+      type: Num
+      colorMin: 0x120087
+      colorMax: 0x9F93ED
       default: 0xFA7070
