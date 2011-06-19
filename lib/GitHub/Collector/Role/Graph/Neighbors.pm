@@ -122,6 +122,8 @@ sub _create_node {
         language => $self->map_languages($info->{language}),
         country  => $info->{country} || '',
         indegree => $info->{indegree},
+        nbrepos  => $info->{public_repo_count},
+        follower  => $info->{followers_count},        
     };
 }
 
