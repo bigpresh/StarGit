@@ -55,7 +55,10 @@ get '/graph/attributes' => sub {
 
 get '/profile/:login' => sub {
     my $login = params->{login};
-    my $info = StarGit::Info->new( login => $login )->get();
+
+    my $info =
+      StarGit::Info->new( login => $login, mongodb_auth => setting('mongodb') )
+      ->get();
 
     if ( !defined $info ) {
         return send_error( "no information for profile " . $login );
