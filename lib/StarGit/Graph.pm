@@ -45,7 +45,6 @@ sub _neighbors {
     my $desc = $self->_get_info_from_login($name);
     my $degree = $self->nodes->{$name} ? $self->nodes->{$name}->{degree} : 0;
 
-
     delete $self->nodes->{$name};
 
     $self->nodes->{$name} = {
@@ -95,7 +94,12 @@ sub _fetch_edges {
     my $connections = $self->db_edges->find( { $type => $name } );
 
     while ( my $edge = $connections->next ) {
-        my $look = $type eq 'source ' ? 'target' : 'source';
+        my $look;
+        if ($type eq 'source'){
+            $look = 'target';
+        }else{
+            $look = 'source';
+        }
         $self->_create_edge($name, $look, $edge);
     }
 }
@@ -103,9 +107,10 @@ sub _fetch_edges {
 sub _create_edge {
     my ( $self, $name, $type, $edge ) = @_;
 
+    return if $edge->{weight} < 2;
     return if $name eq $edge->{$type};
-
     my $edge_id = $edge->{$type} . $name;
+
     if ( !defined $self->edges->{$edge_id} ) {
         $self->edges->{$edge_id} = {
             id       => $edge_id,
@@ -120,13 +125,12 @@ sub _create_edge {
             $self->nodes->{ $edge->{$type} }->{degree}++;
         }
         else {
-            my $desc = 
-              $self->_get_info_from_login( $edge->{$type} );
+            my $desc = $self->_get_info_from_login( $edge->{$type} );
 
             $self->nodes->{ $edge->{$type} } = {
-                id       => $edge->{$type},
-                label    => $edge->{$type},
-                degree   => 1,
+                id     => $edge->{$type},
+                label  => $edge->{$type},
+                degree => 1,
                 %$desc,
             };
         }
@@ -143,7 +147,7 @@ sub _get_info_from_login {
         country  => $info->{country}  || 'null',
         language => $info->{language} || 'null',
         followers_count => $info->{followers_count},
-        indegree => $info->{indegree},
+        indegree        => $info->{indegree},
     };
     return $desc;
 }
