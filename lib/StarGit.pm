@@ -9,10 +9,6 @@ our $VERSION = '0.1';
 
 set serializer => 'JSON';
 
-my $redis_conf = setting('redis');
-my $redis = Redis->new( server => $redis_conf->{server} );
-$redis->auth( $redis_conf->{auth} ) if $redis_conf->{auth};
-
 get '/' => sub {
     template 'index';
 };
@@ -28,11 +24,15 @@ get '/api' => sub {
 get '/graph/local/:name' => sub {
     my $name = params->{'name'};
 
+    my $redis_conf = setting('redis');
+    my $redis = Redis->new( server => $redis_conf->{server} );
+    $redis->auth( $redis_conf->{auth} ) if $redis_conf->{auth};
+
     if (my $cached_graph = $redis->get($name)){
         debug("cache hit for $name");
         return $cached_graph;
     }
-    
+
     my $graph =
       StarGit::Graph->new( name => $name, mongodb_auth => setting('mongodb') );
 
