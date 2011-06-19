@@ -13,11 +13,13 @@ sub export {
     my ($self, ) = @_;
 
     my $gexf = Graph::GEXF->new();
-    $gexf->add_node_attribute( name    => 'string' );
-    $gexf->add_node_attribute( lang    => 'string' );
-    $gexf->add_node_attribute( size    => 'int' );
-    $gexf->add_node_attribute( country => 'string' );
+    $gexf->add_node_attribute( name     => 'string' );
+    $gexf->add_node_attribute( lang     => 'string' );
+    $gexf->add_node_attribute( size     => 'int' );
+    $gexf->add_node_attribute( country  => 'string' );
     $gexf->add_node_attribute( indegree => 'int' );
+    $gexf->add_node_attribute( nbrepos  => 'int' );
+    $gexf->add_node_attribute( follower => 'int' );
 
     my $nodes = {};
     foreach my $node ( keys %{ $self->nodes } ) {
@@ -28,6 +30,8 @@ sub export {
         $n->attribute( lang     => $self->nodes->{$node}->{language} || '' );
         $n->attribute( country  => $self->nodes->{$node}->{country} || '' );
         $n->attribute( indegree => $self->nodes->{$node}->{indegree} );
+        $n->attribute( follower => $self->nodes->{$node}->{follower} );
+        $n->attribute( nbrepos  => $self->nodes->{$node}->{nbrepos} );
         $nodes->{$node} = $n;
     }
 
