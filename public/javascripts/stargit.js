@@ -120,8 +120,10 @@ var stargit=(function(){
 	// This function refreshes the graph from the login of
 	// a user:
 	function getGithubGraph(user){
+          $("#info_graph_desc").text("Loading a new graph for user "+ user);
           $("#user").hide();
           $("#error").hide();
+
 	  url = "/graph/local/"+user;
 	  $.ajax({
 	    url: url,
@@ -142,6 +144,7 @@ var stargit=(function(){
 	      resetGraph(json);
 	      if(document.getElementById("query_input").value)
                 document.getElementById("query_input").value = user;
+              getNodeDescription(user);
 	    }
 	  });
 	}
@@ -209,11 +212,32 @@ var stargit=(function(){
 			setLegend(colorAtts[0]["label"],colorAtts[0]);
 		}
 	}
-	
+
+  function getNodeDescription(user){
+    var url = "/profile/" + user;
+		    $.ajax({
+		      url: url,
+		      dataType: 'json',
+		      success:
+		      function(json){
+                        $("#error").hide();
+                        $("#user").show();
+                        var gravatar = "http://www.gravatar.com/avatar/" + json.gravatar;
+                        $("#gravatared").attr("src", gravatar);
+                        $("#gravatared").show();
+                        $("#user_name").text(json.name);
+                        $("#user_website").text(json.website);                        
+                        $("#user_indegree").text(json.indegree);                        
+                        $("#user_country").text(json.country);                        
+                        $("#user_language").text(json.language);                        
+		      }
+		    });
+  }
+  
 	// PUBLIC FUNCTIONS:
 	return {
 		loadUser: function(name){
-			getGithubGraph(name);
+		  getGithubGraph(name);
 		},
 		
 		setSize: function(e){
@@ -276,27 +300,9 @@ var stargit=(function(){
 		    document.getElementById("query_input").value = query;
 			}
 		},
-		
 		onOverNodes: function(nodesArray){
                   if (nodesArray[0]){
-		    var url = "/profile/" + nodesArray[0];
-		    $.ajax({
-		      url: url,
-		      dataType: 'json',
-		      success:
-		      function(json){
-                        $("#error").hide();
-                        $("#user").show();
-                        var gravatar = "http://www.gravatar.com/avatar/" + json.gravatar;
-                        $("#gravatared").attr("src", gravatar);
-                        $("#gravatared").show();
-                        $("#user_name").text(json.name);
-                        $("#user_website").text(json.website);                        
-                        $("#user_indegree").text(json.indegree);                        
-                        $("#user_country").text(json.country);                        
-                        $("#user_language").text(json.language);                        
-		      }
-		    });
+                    getNodeDescription(nodesArray[0]);
                   }
 		}
 	};

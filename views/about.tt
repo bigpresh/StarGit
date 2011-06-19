@@ -1,1 +1,15 @@
-this is about!
+<div id="main">
+  <div id="static">
+    <h1>About</h1>
+
+    <ul>
+      <li><a href="#whatisstargit">What is StarGit</a></li>
+      <li><a href="#howtoread">How to read the graph</a></li>
+    </ul>
+
+    <h3 id="whatisstargit">What is StarGit</h3>
+
+    <h3 id="howtoread">How to read the graph</a></li>
+    
+  </div>
+</div>

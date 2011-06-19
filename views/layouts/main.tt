@@ -40,7 +40,7 @@
 
   <body>
     <div id="head">
-      <div id="head_title">Stargit - Browse the Github collaborations network</div>
+      <div id="head_title"><a href="/">Stargit - Browse the Github collaborations network</a></div>
       <a id="head_api" href="/api">API</a>
       <a id="head_about" href="/about">About</a>
     </div>
