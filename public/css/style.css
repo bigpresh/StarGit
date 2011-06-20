@@ -101,7 +101,7 @@ body{
 
 #query_top label{
 	padding-left: 16px;
-	font-family: Collegiate;
+	font-family: Collegiate,Helvetica,Arial;
 	font-size: 26pt;
 	width: 45%;
 }
