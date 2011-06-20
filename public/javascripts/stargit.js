@@ -227,6 +227,7 @@ var stargit=(function(){
         var profile_link = document.createElement("a");
         profile_link.setAttribute('href', "http://github.com/"+user);
         profile_link.innerText = user;
+        profile_link.text = user;
 
         if (json.website == 'none'){
           website_link = "none";
@@ -234,6 +235,7 @@ var stargit=(function(){
           var website_link = document.createElement("a");
           website_link.setAttribute('href', json.website);
           website_link.innerText = json.website;
+          website_link.text = json.website;          
         }
 
         $("#user_name").html(profile_link);
