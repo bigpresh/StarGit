@@ -90,7 +90,10 @@ var stargit=(function(){
         var legend  = document.createElement("div");
         legend.id = "value_"+divname;
         legend.style.float="left";
+        legend.style.styleFloat = "left";
+        legend.style.cssFloat = "left";
         legend.style.width = "110px";
+	      legend.style.display = "block";
         $("#legend_elements").append(legend);
 
         var background = document.createElement("div");
