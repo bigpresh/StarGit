@@ -27,6 +27,8 @@
       <li>move your cursor over a node to display informations about a node</li>
       <li>click on a node, to navigate to the graph of this user</li>
     </ul>
+
+    StarGit was created by <a href="http://lumberjaph.net">Franck Cuny</a> and <a href="http://ofnodesandedges.com">Alexi Jacomy</a>.
     
   </div>
 </div>
