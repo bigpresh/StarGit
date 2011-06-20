@@ -55,7 +55,7 @@
       <div id="user_info">
         name: <span id="user_name"></span><br />
         website: <span id="user_website"></span><br />
-        indegre: <span id="user_indegree"></span><br />
+        indegree: <span id="user_indegree"></span><br />
         country: <span id="user_country"></span><br />
         main language: <span id="user_language"></span><br />
       </div>
