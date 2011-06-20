@@ -10,13 +10,13 @@
 
     <h3 id="whatisstargit">What is StarGit</h3>
 
-    StarGit is built on top of SIGMA, a flash application to explore a graph, written by <a href="http://ofnodesandedges.com">Alexis Jacomy</a>.<br />
+    StarGit is built on top of SiGMa, a flash application to explore a graph, written by <a href="http://ofnodesandedges.com">Alexis Jacomy</a>.<br />
 
     With StarGit, you're invited to explore the graph of GitHub's profiles.
     
     <h3 id="howtoread">How to read the graph</h3>
 
-    When you look for a profile, if the user has ever received some contributions on one of his projets, you'll get his graph with the people who had contributed.
+    When you look for a profile, if the user has ever received some contributions on one of his projects, you'll get his graph with the people who had contributed.
 
     <h3 id="howtonavigate">How to navigate in the graph</h3>
 
@@ -24,7 +24,7 @@
 
     <ul>
       <li>zoom (while scrolling with your mouse)</li>
-      <li>move your cursor over a node to display informations about a node</li>
+      <li>move your cursor over a node to display information about a node</li>
       <li>click on a node, to navigate to the graph of this user</li>
     </ul>
 
